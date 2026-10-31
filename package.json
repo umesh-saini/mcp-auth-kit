@@ -1,0 +1,67 @@
+{
+  "name": "mcp-auth-kit",
+  "version": "0.1.0",
+  "description": "Drop-in OAuth 2.1 for remote MCP servers in Node.js/TypeScript: PKCE, dynamic client registration, consent page, refresh-token rotation, personal access tokens and stateless Streamable HTTP. Works with Claude, ChatGPT, Cursor and any MCP client.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "oauth",
+    "oauth2",
+    "oauth2.1",
+    "pkce",
+    "dynamic-client-registration",
+    "streamable-http",
+    "claude",
+    "chatgpt",
+    "ai-agents",
+    "express",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "Umesh Saini",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umeshsaini8085/mcp-auth-kit.git"
+  },
+  "homepage": "https://github.com/umeshsaini8085/mcp-auth-kit#readme",
+  "bugs": "https://github.com/umeshsaini8085/mcp-auth-kit/issues",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test test/*.test.ts",
+    "example": "tsx examples/basic/server.ts",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "peerDependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.0",
+    "express": "^4.21.0 || ^5.0.0"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.10.2",
+    "express": "^5.3.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "zod": "^4.6.7"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

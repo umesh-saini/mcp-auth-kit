@@ -1,12 +1,12 @@
-# mcp-auth-kit
+# mcp-oauth-starter
 
 **Drop-in OAuth 2.1 for remote MCP servers in Node.js / TypeScript.**
 
 [![CI](https://github.com/umesh-saini/mcp-auth-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/umesh-saini/mcp-auth-kit/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/@umesh-saini/mcp-auth-kit.svg)](https://www.npmjs.com/package/@umesh-saini/mcp-auth-kit)
-[![license](https://img.shields.io/npm/l/@umesh-saini/mcp-auth-kit.svg)](LICENSE)
+[![npm](https://img.shields.io/npm/v/mcp-oauth-starter.svg)](https://www.npmjs.com/package/mcp-oauth-starter)
+[![license](https://img.shields.io/npm/l/mcp-oauth-starter.svg)](LICENSE)
 
-Your users click **"Connect"** in Claude, ChatGPT, Cursor or VS Code, sign in to **your** app, approve access, and the AI can call your tools as that user. `mcp-auth-kit` gives you everything that has to happen in between, in one function call:
+Your users click **"Connect"** in Claude, ChatGPT, Cursor or VS Code, sign in to **your** app, approve access, and the AI can call your tools as that user. `mcp-oauth-starter` gives you everything that has to happen in between, in one function call:
 
 ```ts
 const auth = createMcpAuth({ issuerUrl: 'https://api.example.com', store, secret, getUser: (req) => req.user });
@@ -49,7 +49,7 @@ Getting this right by hand means reading the MCP authorization spec plus six RFC
 ## Install
 
 ```bash
-npm install @umesh-saini/mcp-auth-kit @modelcontextprotocol/sdk express
+npm install mcp-oauth-starter @modelcontextprotocol/sdk express
 ```
 
 Node.js 20+.
@@ -60,7 +60,7 @@ Node.js 20+.
 import express from 'express';
 import { z } from 'zod';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { createMcpAuth, MemoryStore, ok } from '@umesh-saini/mcp-auth-kit';
+import { createMcpAuth, MemoryStore, ok } from 'mcp-oauth-starter';
 
 const app = express();
 // ... your existing session / login middleware ...
@@ -107,7 +107,7 @@ npx @modelcontextprotocol/inspector   # Transport: Streamable HTTP · URL: http:
 sequenceDiagram
     autonumber
     participant AI as AI app (Claude, ChatGPT…)
-    participant Kit as Your server + mcp-auth-kit
+    participant Kit as Your server + mcp-oauth-starter
     participant U as User's browser
 
     AI->>Kit: POST /mcp (no token)
@@ -196,7 +196,7 @@ auth.createPersonalToken(userId, name) // → { token, record }; show the token 
 ### Tool helpers
 
 ```ts
-import { ok, fail, withAuth } from '@umesh-saini/mcp-auth-kit';
+import { ok, fail, withAuth } from 'mcp-oauth-starter';
 
 server.registerTool('delete_project', { inputSchema: { id: z.string() } },
   withAuth(async ({ id }, { userId, scopes }) => {
@@ -246,7 +246,7 @@ See [docs/security.md](docs/security.md) for the threat model (consent CSRF, cli
 ## FAQ
 
 **Do I need this if I use an external identity provider (Auth0, Clerk, WorkOS)?**
-Not necessarily. Some providers can act as the MCP authorization server for you. `mcp-auth-kit` is for when your app *is* the identity provider: you have your own users, sessions and login, and you don't want another vendor or a second login.
+Not necessarily. Some providers can act as the MCP authorization server for you. `mcp-oauth-starter` is for when your app *is* the identity provider: you have your own users, sessions and login, and you don't want another vendor or a second login.
 
 **Does it support stateful sessions / SSE streams?**
 The mounted endpoint is stateless (JSON responses, a new server per request). That covers tools, resources and prompts, and is the easiest to deploy. For server-initiated streams, use `auth.router()` + `auth.protect()` with your own transport.
@@ -256,7 +256,7 @@ The routes are Express today. `auth.provider` is a standard MCP SDK `OAuthServer
 
 ## Where it comes from
 
-`mcp-auth-kit` was extracted from **SangeetFlow**, a multi-user YouTube automation platform. Creators connect Claude or ChatGPT to it, and the assistant researches a topic, writes a script, renders a narrated video (using the companion library [htmlreel](https://github.com/umesh-saini/htmlreel)) and schedules it on their channel. All of that runs over this OAuth layer.
+`mcp-oauth-starter` was extracted from **SangeetFlow**, a multi-user YouTube automation platform. Creators connect Claude or ChatGPT to it, and the assistant researches a topic, writes a script, renders a narrated video (using the companion library [htmlreel](https://github.com/umesh-saini/htmlreel)) and schedules it on their channel. All of that runs over this OAuth layer.
 
 ## Contributing
 

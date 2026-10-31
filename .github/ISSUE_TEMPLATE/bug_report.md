@@ -6,7 +6,7 @@ labels: bug
 
 **Client** (Claude web / Claude Code / ChatGPT / Cursor / Inspector / other, with version):
 
-**mcp-auth-kit, @modelcontextprotocol/sdk, express and Node versions:**
+**mcp-oauth-starter, @modelcontextprotocol/sdk, express and Node versions:**
 
 **What happened** (the step where it failed, and any error the client or server showed):
 

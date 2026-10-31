@@ -83,7 +83,7 @@ export function publicToken(t: TokenRecord): PublicTokenInfo {
 }
 
 export function createAuthCore(input: McpAuthOptions): McpAuthCore {
-  if (!input.secret || input.secret.length < 32) throw new Error('mcp-auth-kit: `secret` must be at least 32 characters (e.g. `openssl rand -base64 48`).');
+  if (!input.secret || input.secret.length < 32) throw new Error('mcp-oauth-starter: `secret` must be at least 32 characters (e.g. `openssl rand -base64 48`).');
   const options = {
     scopes: ['mcp'],
     serviceName: 'MCP server',

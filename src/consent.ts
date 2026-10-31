@@ -65,7 +65,7 @@ function secureHeaders(res: Response) {
 
 export function createConsentRouter(core: McpAuthCore, render: (data: ConsentPageData) => string = defaultConsentPage): Router {
   const { getUser, loginUrl, secret, serviceName } = core.options;
-  if (!getUser) throw new Error('mcp-auth-kit: pass `getUser` to use the built-in consent page, or set `consentUrl` to your own.');
+  if (!getUser) throw new Error('mcp-oauth-starter: pass `getUser` to use the built-in consent page, or set `consentUrl` to your own.');
   const router = Router();
   const action = new URL(CONSENT_PATH, core.issuer).pathname;
 

@@ -105,7 +105,7 @@ export function createMcpAuth(options: CreateMcpAuthOptions): McpAuth {
   function mount(app: Express, m: MountOptions) {
     const path = m.path ?? '/mcp';
     const mcpUrl = new URL(path, core.issuer);
-    const onError = m.onError ?? ((err) => console.error('[mcp-auth-kit] MCP request failed', err));
+    const onError = m.onError ?? ((err) => console.error('[mcp-oauth-starter] MCP request failed', err));
     app.use(router(mcpUrl));
 
     // A no-op when the app already parsed the body with its own express.json().

@@ -1,6 +1,6 @@
 # Security model
 
-What `mcp-auth-kit` defends against, and what is still your job.
+What `mcp-oauth-starter` defends against, and what is still your job.
 
 ## Threats the kit handles
 

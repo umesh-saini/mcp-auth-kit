@@ -5,7 +5,7 @@ Thanks for helping. Bug reports, new storage adapters, framework adapters (Fasti
 ## Setup
 
 ```bash
-git clone https://github.com/umeshsaini8085/mcp-auth-kit && cd mcp-auth-kit
+git clone https://github.com/umesh-saini/mcp-auth-kit && cd mcp-auth-kit
 npm install
 npm test          # full OAuth flow against a real HTTP server, ~2 s
 npm run example   # the notes demo on http://localhost:3000/mcp
@@ -21,4 +21,4 @@ npm run example   # the notes demo on http://localhost:3000/mcp
 ## Releasing (maintainers)
 
 1. Update `CHANGELOG.md` and bump `version` in `package.json`.
-2. `git tag vX.Y.Z && git push --tags`. The Release workflow publishes to npm with provenance.
+2. `git tag vX.Y.Z && git push --tags`. The Release workflow publishes to npm with provenance (via npm trusted publishing, or an `NPM_TOKEN` secret).

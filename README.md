@@ -2,7 +2,7 @@
 
 **Drop-in OAuth 2.1 for remote MCP servers in Node.js / TypeScript.**
 
-[![CI](https://github.com/umeshsaini8085/mcp-auth-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/umeshsaini8085/mcp-auth-kit/actions/workflows/ci.yml)
+[![CI](https://github.com/umesh-saini/mcp-auth-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/umesh-saini/mcp-auth-kit/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/mcp-auth-kit.svg)](https://www.npmjs.com/package/mcp-auth-kit)
 [![license](https://img.shields.io/npm/l/mcp-auth-kit.svg)](LICENSE)
 
@@ -96,7 +96,7 @@ That's the whole integration. Your MCP URL is `https://api.example.com/mcp`.
 **Try the bundled example** (a per-user notes app with a demo login):
 
 ```bash
-git clone https://github.com/umeshsaini8085/mcp-auth-kit && cd mcp-auth-kit && npm install
+git clone https://github.com/umesh-saini/mcp-auth-kit && cd mcp-auth-kit && npm install
 npm run example
 npx @modelcontextprotocol/inspector   # Transport: Streamable HTTP · URL: http://localhost:3000/mcp
 ```
@@ -256,7 +256,7 @@ The routes are Express today. `auth.provider` is a standard MCP SDK `OAuthServer
 
 ## Where it comes from
 
-`mcp-auth-kit` was extracted from **SangeetFlow**, a multi-user YouTube automation platform. Creators connect Claude or ChatGPT to it, and the assistant researches a topic, writes a script, renders a narrated video (using the companion library [htmlreel](https://github.com/umeshsaini8085/htmlreel)) and schedules it on their channel. All of that runs over this OAuth layer.
+`mcp-auth-kit` was extracted from **SangeetFlow**, a multi-user YouTube automation platform. Creators connect Claude or ChatGPT to it, and the assistant researches a topic, writes a script, renders a narrated video (using the companion library [htmlreel](https://github.com/umesh-saini/htmlreel)) and schedules it on their channel. All of that runs over this OAuth layer.
 
 ## Contributing
 

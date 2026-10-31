@@ -21,10 +21,10 @@
   "author": "Umesh Saini",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/umeshsaini8085/mcp-auth-kit.git"
+    "url": "git+https://github.com/umesh-saini/mcp-auth-kit.git"
   },
-  "homepage": "https://github.com/umeshsaini8085/mcp-auth-kit#readme",
-  "bugs": "https://github.com/umeshsaini8085/mcp-auth-kit/issues",
+  "homepage": "https://github.com/umesh-saini/mcp-auth-kit#readme",
+  "bugs": "https://github.com/umesh-saini/mcp-auth-kit/issues",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

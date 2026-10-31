@@ -1,5 +1,5 @@
 {
-  "name": "mcp-auth-kit",
+  "name": "@umesh-saini/mcp-auth-kit",
   "version": "0.1.0",
   "description": "Drop-in OAuth 2.1 for remote MCP servers in Node.js/TypeScript: PKCE, dynamic client registration, consent page, refresh-token rotation, personal access tokens and stateless Streamable HTTP. Works with Claude, ChatGPT, Cursor and any MCP client.",
   "keywords": [
@@ -40,6 +40,9 @@
     "README.md",
     "LICENSE"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "sideEffects": false,
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.build.json",

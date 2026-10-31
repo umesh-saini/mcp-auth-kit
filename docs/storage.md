@@ -20,7 +20,7 @@ This is the store SangeetFlow runs in production.
 
 ```ts
 import { Schema, model } from 'mongoose';
-import type { OAuthStore, TokenRecord, GrantRecord } from 'mcp-auth-kit';
+import type { OAuthStore, TokenRecord, GrantRecord } from '@umesh-saini/mcp-auth-kit';
 
 const Client = model('OAuthClient', new Schema({
   _id: String,                                   // client_id
@@ -112,7 +112,7 @@ create index on oauth_tokens (user_id);
 
 ```ts
 import pg from 'pg';
-import type { OAuthStore, TokenRecord, GrantRecord } from 'mcp-auth-kit';
+import type { OAuthStore, TokenRecord, GrantRecord } from '@umesh-saini/mcp-auth-kit';
 
 const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 
@@ -169,7 +169,7 @@ Good for grants (they are short-lived). Keep clients and tokens in your main dat
 
 ```ts
 import Redis from 'ioredis';
-import type { OAuthStore } from 'mcp-auth-kit';
+import type { OAuthStore } from '@umesh-saini/mcp-auth-kit';
 
 const redis = new Redis(process.env.REDIS_URL!);
 const revive = (s: string | null) => s ? JSON.parse(s, (k, v) => (/At$/.test(k) && v ? new Date(v) : v)) : undefined;

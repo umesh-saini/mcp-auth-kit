@@ -3,8 +3,8 @@
 **Drop-in OAuth 2.1 for remote MCP servers in Node.js / TypeScript.**
 
 [![CI](https://github.com/umesh-saini/mcp-auth-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/umesh-saini/mcp-auth-kit/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/mcp-auth-kit.svg)](https://www.npmjs.com/package/mcp-auth-kit)
-[![license](https://img.shields.io/npm/l/mcp-auth-kit.svg)](LICENSE)
+[![npm](https://img.shields.io/npm/v/@umesh-saini/mcp-auth-kit.svg)](https://www.npmjs.com/package/@umesh-saini/mcp-auth-kit)
+[![license](https://img.shields.io/npm/l/@umesh-saini/mcp-auth-kit.svg)](LICENSE)
 
 Your users click **"Connect"** in Claude, ChatGPT, Cursor or VS Code, sign in to **your** app, approve access, and the AI can call your tools as that user. `mcp-auth-kit` gives you everything that has to happen in between, in one function call:
 
@@ -49,7 +49,7 @@ Getting this right by hand means reading the MCP authorization spec plus six RFC
 ## Install
 
 ```bash
-npm install mcp-auth-kit @modelcontextprotocol/sdk express
+npm install @umesh-saini/mcp-auth-kit @modelcontextprotocol/sdk express
 ```
 
 Node.js 20+.
@@ -60,7 +60,7 @@ Node.js 20+.
 import express from 'express';
 import { z } from 'zod';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { createMcpAuth, MemoryStore, ok } from 'mcp-auth-kit';
+import { createMcpAuth, MemoryStore, ok } from '@umesh-saini/mcp-auth-kit';
 
 const app = express();
 // ... your existing session / login middleware ...
@@ -196,7 +196,7 @@ auth.createPersonalToken(userId, name) // → { token, record }; show the token 
 ### Tool helpers
 
 ```ts
-import { ok, fail, withAuth } from 'mcp-auth-kit';
+import { ok, fail, withAuth } from '@umesh-saini/mcp-auth-kit';
 
 server.registerTool('delete_project', { inputSchema: { id: z.string() } },
   withAuth(async ({ id }, { userId, scopes }) => {

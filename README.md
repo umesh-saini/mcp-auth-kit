@@ -106,23 +106,24 @@ npx @modelcontextprotocol/inspector   # Transport: Streamable HTTP · URL: http:
 ```mermaid
 sequenceDiagram
     autonumber
-    participant AI as AI app (Claude, ChatGPT…)
-    participant Kit as Your server + mcp-oauth-starter
-    participant U as User's browser
+    participant AI as AI app - Claude, ChatGPT, Cursor
+    participant S as Your server with mcp-oauth-starter
+    participant B as User browser
 
-    AI->>Kit: POST /mcp (no token)
-    Kit-->>AI: 401 + WWW-Authenticate: resource_metadata=…
-    AI->>Kit: GET /.well-known/oauth-protected-resource/mcp → /.well-known/oauth-authorization-server
-    AI->>Kit: POST /register (dynamic client registration)
-    AI->>U: open /authorize?…&code_challenge=…
-    U->>Kit: GET /authorize → 302 /oauth/consent
-    Kit->>U: your login (if needed), then the consent page
-    U->>Kit: Allow (CSRF-checked)
-    Kit-->>U: 303 → AI redirect_uri?code=…&state=…
-    AI->>Kit: POST /token (code + code_verifier)
-    Kit-->>AI: access_token (1h) + refresh_token (rotating)
-    AI->>Kit: POST /mcp  Authorization: Bearer …
-    Kit->>Kit: createServer({ userId }) → your tools run as the user
+    AI->>S: POST /mcp without a token
+    S-->>AI: 401 with a WWW-Authenticate header
+    AI->>S: Read the /.well-known metadata
+    AI->>S: POST /register - dynamic client registration
+    AI->>B: Open /authorize with a PKCE code_challenge
+    B->>S: GET /authorize
+    S-->>B: Your login if needed, then the consent page
+    B->>S: User clicks Allow - CSRF checked
+    S-->>B: Redirect to the AI app with a code
+    B->>AI: Authorization code
+    AI->>S: POST /token with code and code_verifier
+    S-->>AI: access_token and refresh_token
+    AI->>S: POST /mcp with the Bearer token
+    S->>S: createServer runs your tools as the user
 ```
 
 Routes added to your app (all at the site root, as the spec expects):
